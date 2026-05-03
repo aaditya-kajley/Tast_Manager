@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
 import axios from "axios"
-import Swal from 'sweetalert2'
 import '../styles/login.css'
-// or via CommonJS
 
 export default function Signin() {
     const history = useNavigate();
@@ -18,8 +15,8 @@ export default function Signin() {
                 { email, password },
                 // { withCredentials: true }
             );
-            if(res.data.status == true){
-                if(res.data.role == "admin"){
+            if(res.data.status === true){
+                if(res.data.role === "admin"){
                     history("/admin", { state: { signedUser: email } })
                 }
                 else{

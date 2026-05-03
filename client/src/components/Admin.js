@@ -276,7 +276,7 @@ function AdminsSection({admins,setAdmins}) {
     try {
       await axios.delete(`http://localhost:8000/admin/${email}`)
         .then(res => {
-          if (res.data.status == true) 
+          if (res.data.status === true) 
             alert(`Admin(${email}) Deleted`)
             setAdmins(prev => prev.filter(u => u.email !== email));
         }).catch(err => {
@@ -348,7 +348,7 @@ function EmployeesSection({employees,setEmployees}) {
     try {
       await axios.delete(`http://localhost:8000/employee/${email}`)
         .then(res => {
-          if (res.data.status == true) 
+          if (res.data.status === true) 
             alert(`Employee(${email}) Deleted`)
             setEmployees(prev => prev.filter(u => u.email !== email));
         }).catch(err => {
@@ -369,7 +369,7 @@ function EmployeesSection({employees,setEmployees}) {
     setModal(false);
     await axios.post("http://localhost:8000/employee", { form })
       .then((res) => {
-        if (res.data.status == true) {
+        if (res.data.status === true) {
           const { password, ...rest } = form;
           setEmployees([...employees,  rest ]);
         }
