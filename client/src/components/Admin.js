@@ -40,7 +40,6 @@ const initials = (name) => {
   if (!name || typeof name !== "string") return "??";
   return name.split(" ").filter(Boolean).map((w) => w[0]).join("")
     .toUpperCase().slice(0, 2);
-  name.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2);
 }
 
 const barColor = (pct) => {
@@ -270,7 +269,7 @@ function AdminsSection({admins,setAdmins}) {
         setAdmins(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setAdmins]);
 
   async function delAdmin(email) {
     try {
@@ -342,7 +341,7 @@ function EmployeesSection({employees,setEmployees}) {
         setEmployees(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setEmployees]);
 
   async function delEmployee(email) {
     try {
