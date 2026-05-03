@@ -264,7 +264,7 @@ function AdminsSection({admins,setAdmins}) {
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "admin" });
 
   useEffect(() => {
-    axios.get("${process.env.backend}/admin")
+    axios.get(`${process.env.backend}/admin`)
       .then((res) => {
         setAdmins(res.data);
       })
@@ -294,7 +294,7 @@ function AdminsSection({admins,setAdmins}) {
       return;
     }
     setModal(false);
-    axios.post("${process.env.backend}/admin", { form })
+    axios.post(`${process.env.backend}/admin`, { form })
       .then((res) => {
         if (res.data.status) {
           const { password, ...rest } = form;
@@ -336,7 +336,7 @@ function EmployeesSection({employees,setEmployees}) {
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "employee" });
 
   useEffect(() => {
-    axios.get("${process.env.backend}/employee")
+    axios.get(`${process.env.backend}/employee`)
       .then((res) => {
         setEmployees(res.data);
       })
@@ -366,7 +366,7 @@ function EmployeesSection({employees,setEmployees}) {
       return;
     }
     setModal(false);
-    await axios.post("${process.env.backend}/employee", { form })
+    await axios.post(`${process.env.backend}/employee`, { form })
       .then((res) => {
         if (res.data.status === true) {
           const { password, ...rest } = form;
