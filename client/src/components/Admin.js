@@ -264,7 +264,7 @@ function AdminsSection({admins,setAdmins}) {
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "admin" });
 
   useEffect(() => {
-    axios.get("http://localhost:8000/admin")
+    axios.get("${process.env.backend}/admin")
       .then((res) => {
         setAdmins(res.data);
       })
@@ -273,7 +273,7 @@ function AdminsSection({admins,setAdmins}) {
 
   async function delAdmin(email) {
     try {
-      await axios.delete(`http://localhost:8000/admin/${email}`)
+      await axios.delete(`${process.env.backend}/admin/${email}`)
         .then(res => {
           if (res.data.status === true) 
             alert(`Admin(${email}) Deleted`)
@@ -294,7 +294,7 @@ function AdminsSection({admins,setAdmins}) {
       return;
     }
     setModal(false);
-    axios.post("http://localhost:8000/admin", { form })
+    axios.post("${process.env.backend}/admin", { form })
       .then((res) => {
         if (res.data.status) {
           const { password, ...rest } = form;
@@ -336,7 +336,7 @@ function EmployeesSection({employees,setEmployees}) {
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "employee" });
 
   useEffect(() => {
-    axios.get("http://localhost:8000/employee")
+    axios.get("${process.env.backend}/employee")
       .then((res) => {
         setEmployees(res.data);
       })
@@ -345,7 +345,7 @@ function EmployeesSection({employees,setEmployees}) {
 
   async function delEmployee(email) {
     try {
-      await axios.delete(`http://localhost:8000/employee/${email}`)
+      await axios.delete(`${process.env.backend}/employee/${email}`)
         .then(res => {
           if (res.data.status === true) 
             alert(`Employee(${email}) Deleted`)
@@ -366,7 +366,7 @@ function EmployeesSection({employees,setEmployees}) {
       return;
     }
     setModal(false);
-    await axios.post("http://localhost:8000/employee", { form })
+    await axios.post("${process.env.backend}/employee", { form })
       .then((res) => {
         if (res.data.status === true) {
           const { password, ...rest } = form;

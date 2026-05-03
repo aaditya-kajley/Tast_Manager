@@ -12,7 +12,7 @@ export default function Signin() {
     async function submit(e) {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8000/signin",
+            const res = await axios.post(`${process.env.backend}/signin`,
                 { email, password },
                 // { withCredentials: true }
             );
