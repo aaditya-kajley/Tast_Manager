@@ -1,7 +1,5 @@
 const express  = require('express');
 const cors     = require('cors');
-// const helmet   = require('helmet');
-// const morgan   = require('morgan');
 require('dotenv').config();
 
 const { Users, Projects } = require('./mongo');
@@ -12,7 +10,7 @@ const app = express();
 
 // app.use(helmet());                          // security headers
 app.use(cors({ 
-  origin: "http://localhost:3000",
+  origin: process.env.frontend,
   // credentials: true
  }));             // allow all origins — restrict in production
 app.use(express.json());                    // parse JSON body
@@ -157,4 +155,4 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 8000;
 
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));
