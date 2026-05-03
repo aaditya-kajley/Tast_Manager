@@ -16,6 +16,7 @@ export default function Signin() {
                 { email, password },
                 // { withCredentials: true }
             );
+            console.log(res)
             if(res.data.status === true){
                 if(res.data.role === "admin"){
                     history("/admin", { state: { signedUser: email } })

@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true })); // parse form data
 
 app.post('/signin',async (req,res) => {
   const {email,password} = req.body
+  console.log(req.body)
   const user = await Users.findOne({email:email,password:password});
   if(!user){
     res.json({status:false})
